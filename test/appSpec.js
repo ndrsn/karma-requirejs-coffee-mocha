@@ -1,22 +1,22 @@
-define(['app', 'jquery', 'underscore'], function(App, $, _) {
+define(['app', 'chai', 'jquery', 'underscore'], function(App, chai, $, _) {
 
-    describe('just checking', function() {
+	var should = chai.should();
 
-        it('works for app', function() {
-            var el = $('<div></div>');
+	describe('just checking', function() {
+		it('works for app', function() {
+			var el = $('<div></div>');
 
-            var app = new App(el);
-            app.render();
+			var app = new App(el);
+			app.render();
 
-            console.assert(el.text() === 'require.js up and running');
-        });
+			el.text().should.equal('require.js up and running');
+		});
 
-        it('works for underscore', function() {
-            // just checking that _ works
-            console.assert(_.size([1,2,3]) !== 3);
-            throw new Error("fff")
-        });
+		it('works for underscore', function() {
+			// just checking that _ works
+			_.size([1,2,3]).should.equal(3);
+		});
 
-    });
+	});
 
 });
